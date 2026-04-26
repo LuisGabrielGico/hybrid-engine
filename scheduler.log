@@ -1,0 +1,770 @@
+2026-04-23 02:18:56,862 | INFO | select pg_catalog.version()
+2026-04-23 02:18:56,862 | INFO | [raw sql] {}
+2026-04-23 02:18:57,014 | INFO | select current_schema()
+2026-04-23 02:18:57,024 | INFO | [raw sql] {}
+2026-04-23 02:18:57,168 | INFO | show standard_conforming_strings
+2026-04-23 02:18:57,182 | INFO | [raw sql] {}
+2026-04-23 02:18:57,336 | INFO | BEGIN (implicit)
+2026-04-23 02:18:57,377 | INFO | SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2026-04-23 02:18:57,385 | INFO | [generated in 0.00656s] {'table_name': 'assets', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2026-04-23 02:18:57,534 | INFO | SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2026-04-23 02:18:57,534 | INFO | [cached since 0.157s ago] {'table_name': 'price_history', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2026-04-23 02:18:57,603 | INFO | SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2026-04-23 02:18:57,607 | INFO | [cached since 0.2284s ago] {'table_name': 'market_data', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2026-04-23 02:18:57,670 | INFO | SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2026-04-23 02:18:57,670 | INFO | [cached since 0.3009s ago] {'table_name': 'live_market', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2026-04-23 02:18:57,749 | INFO | SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+2026-04-23 02:18:57,751 | INFO | [cached since 0.3732s ago] {'table_name': 'live_signals', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+2026-04-23 02:18:57,819 | INFO | COMMIT
+2026-04-23 02:18:57,895 | INFO | Scheduler initialized
+2026-04-23 02:18:57,901 | INFO | Cycle started
+2026-04-23 02:18:57,921 | INFO | BEGIN (implicit)
+2026-04-23 02:18:57,929 | INFO | DELETE FROM live_signals
+2026-04-23 02:18:57,931 | INFO | [generated in 0.00192s] {}
+2026-04-23 02:18:58,085 | INFO | DELETE FROM live_market
+2026-04-23 02:18:58,112 | INFO | [generated in 0.02647s] {}
+2026-04-23 02:18:58,230 | INFO | COMMIT
+2026-04-23 02:19:00,088 | INFO | BEGIN (implicit)
+2026-04-23 02:19:00,118 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:00,120 | INFO | [generated in 0.00237s] {'symbol_1': 'bitcoin', 'param_1': 1}
+2026-04-23 02:19:00,270 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:00,270 | INFO | [generated in 0.00148s] {'asset_id_1': 1, 'param_1': 20}
+2026-04-23 02:19:00,428 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:00,428 | INFO | [generated in 0.00150s] {'asset_id_1': 1, 'param_1': 20}
+2026-04-23 02:19:00,507 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:00,507 | INFO | [generated in 0.00266s] {'asset_id': 1, 'price': 77956, 'market_cap': 1561648018455.1716, 'volume': 48096916252.70733, 'change_24h': 0.06274549996641149, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 0, 507913)}
+2026-04-23 02:19:00,593 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:00,593 | INFO | [generated in 0.00023s (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 1, 'signal_type__0': 'score', 'value__0': -0.10562820733790967, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 0, 593367), 'asset_id__1': 1, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 0, 593367)}
+2026-04-23 02:19:00,666 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:00,666 | INFO | [generated in 0.00070s] {'asset_id': 1, 'market_cap': 1561648018455.1716, 'volume': 48096916252.70733, 'change_24h': 0.06274549996641149, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 0, 666894)}
+2026-04-23 02:19:00,746 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:00,746 | INFO | [generated in 0.00069s] {'asset_id': 1, 'price': 77956, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 0, 746455)}
+2026-04-23 02:19:00,810 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:00,810 | INFO | [cached since 0.7042s ago] {'symbol_1': 'ethereum', 'param_1': 1}
+2026-04-23 02:19:00,894 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:00,894 | INFO | [cached since 0.6236s ago] {'asset_id_1': 2, 'param_1': 20}
+2026-04-23 02:19:00,964 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:00,964 | INFO | [cached since 0.5362s ago] {'asset_id_1': 2, 'param_1': 20}
+2026-04-23 02:19:01,033 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:01,035 | INFO | [cached since 0.5157s ago] {'asset_id': 2, 'price': 2350.06, 'market_cap': 283824580095.2906, 'volume': 21509716185.906322, 'change_24h': -1.4737747002171304, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 1, 33684)}
+2026-04-23 02:19:01,113 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:01,115 | INFO | [cached since 0.5121s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 2, 'signal_type__0': 'score', 'value__0': -0.05287922470063322, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 1, 113098), 'asset_id__1': 2, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 1, 113098)}
+2026-04-23 02:19:01,182 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:01,182 | INFO | [cached since 0.5078s ago] {'asset_id': 2, 'market_cap': 283824580095.2906, 'volume': 21509716185.906322, 'change_24h': -1.4737747002171304, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 1, 182039)}
+2026-04-23 02:19:01,240 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:01,240 | INFO | [cached since 0.5041s ago] {'asset_id': 2, 'price': 2350.06, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 1, 240726)}
+2026-04-23 02:19:01,323 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:01,323 | INFO | [cached since 1.204s ago] {'symbol_1': 'tether', 'param_1': 1}
+2026-04-23 02:19:01,395 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:01,395 | INFO | [cached since 1.126s ago] {'asset_id_1': 3, 'param_1': 20}
+2026-04-23 02:19:01,467 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:01,467 | INFO | [cached since 1.043s ago] {'asset_id_1': 3, 'param_1': 20}
+2026-04-23 02:19:01,546 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:01,546 | INFO | [cached since 1.03s ago] {'asset_id': 3, 'price': 1.0, 'market_cap': 188846718980.44128, 'volume': 77938503121.66017, 'change_24h': 0.009630310483808528, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 1, 546797)}
+2026-04-23 02:19:01,623 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:01,623 | INFO | [cached since 1.021s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 3, 'signal_type__0': 'score', 'value__0': 0.33987744449670065, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 1, 621896), 'asset_id__1': 3, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 1, 621896)}
+2026-04-23 02:19:01,695 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:01,695 | INFO | [cached since 1.02s ago] {'asset_id': 3, 'market_cap': 188846718980.44128, 'volume': 77938503121.66017, 'change_24h': 0.009630310483808528, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 1, 695500)}
+2026-04-23 02:19:01,766 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:01,768 | INFO | [cached since 1.018s ago] {'asset_id': 3, 'price': 1.0, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 1, 766114)}
+2026-04-23 02:19:01,840 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:01,842 | INFO | [cached since 1.723s ago] {'symbol_1': 'binancecoin', 'param_1': 1}
+2026-04-23 02:19:01,913 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:01,917 | INFO | [cached since 1.646s ago] {'asset_id_1': 4, 'param_1': 20}
+2026-04-23 02:19:01,987 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:01,987 | INFO | [cached since 1.563s ago] {'asset_id_1': 4, 'param_1': 20}
+2026-04-23 02:19:02,066 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:02,068 | INFO | [cached since 1.55s ago] {'asset_id': 4, 'price': 636.39, 'market_cap': 85829277597.78955, 'volume': 1274876625.5576947, 'change_24h': -0.8583806502393867, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 2, 66570)}
+2026-04-23 02:19:02,133 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:02,133 | INFO | [cached since 1.539s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 4, 'signal_type__0': 'score', 'value__0': 0.14350468910168168, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 2, 133630), 'asset_id__1': 4, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 2, 133630)}
+2026-04-23 02:19:02,209 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:02,209 | INFO | [cached since 1.534s ago] {'asset_id': 4, 'market_cap': 85829277597.78955, 'volume': 1274876625.5576947, 'change_24h': -0.8583806502393867, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 2, 209749)}
+2026-04-23 02:19:02,277 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:02,277 | INFO | [cached since 1.529s ago] {'asset_id': 4, 'price': 636.39, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 2, 277808)}
+2026-04-23 02:19:02,341 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:02,341 | INFO | [cached since 2.231s ago] {'symbol_1': 'solana', 'param_1': 1}
+2026-04-23 02:19:02,421 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:02,426 | INFO | [cached since 2.156s ago] {'asset_id_1': 5, 'param_1': 20}
+2026-04-23 02:19:02,499 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:02,507 | INFO | [cached since 2.079s ago] {'asset_id_1': 5, 'param_1': 20}
+2026-04-23 02:19:02,576 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:02,592 | INFO | [cached since 2.075s ago] {'asset_id': 5, 'price': 85.94, 'market_cap': 49480660654.92523, 'volume': 4178055143.3765626, 'change_24h': -1.4574833411325665, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 2, 576510)}
+2026-04-23 02:19:02,669 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:02,679 | INFO | [cached since 2.068s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 5, 'signal_type__0': 'score', 'value__0': -0.22646455872183147, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 2, 669279), 'asset_id__1': 5, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 2, 669279)}
+2026-04-23 02:19:02,748 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:02,760 | INFO | [cached since 2.084s ago] {'asset_id': 5, 'market_cap': 49480660654.92523, 'volume': 4178055143.3765626, 'change_24h': -1.4574833411325665, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 2, 748034)}
+2026-04-23 02:19:02,845 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:02,874 | INFO | [cached since 2.125s ago] {'asset_id': 5, 'price': 85.94, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 2, 845134)}
+2026-04-23 02:19:02,943 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:02,947 | INFO | [cached since 2.829s ago] {'symbol_1': 'ripple', 'param_1': 1}
+2026-04-23 02:19:03,016 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:03,021 | INFO | [cached since 2.75s ago] {'asset_id_1': 6, 'param_1': 20}
+2026-04-23 02:19:03,109 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:03,113 | INFO | [cached since 2.685s ago] {'asset_id_1': 6, 'param_1': 20}
+2026-04-23 02:19:03,189 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:03,191 | INFO | [cached since 2.672s ago] {'asset_id': 6, 'price': 1.42, 'market_cap': 87382168129.96454, 'volume': 2423799299.3580055, 'change_24h': -1.944496329176314, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 3, 189203)}
+2026-04-23 02:19:03,250 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:03,250 | INFO | [cached since 2.657s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 6, 'signal_type__0': 'score', 'value__0': -0.4191731142101658, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 3, 250739), 'asset_id__1': 6, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 3, 250739)}
+2026-04-23 02:19:03,330 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:03,330 | INFO | [cached since 2.654s ago] {'asset_id': 6, 'market_cap': 87382168129.96454, 'volume': 2423799299.3580055, 'change_24h': -1.944496329176314, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 3, 330429)}
+2026-04-23 02:19:03,401 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:03,403 | INFO | [cached since 2.654s ago] {'asset_id': 6, 'price': 1.42, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 3, 401025)}
+2026-04-23 02:19:03,476 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:03,476 | INFO | [cached since 3.358s ago] {'symbol_1': 'usd-coin', 'param_1': 1}
+2026-04-23 02:19:03,546 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:03,546 | INFO | [cached since 3.277s ago] {'asset_id_1': 7, 'param_1': 20}
+2026-04-23 02:19:03,622 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:03,622 | INFO | [cached since 3.195s ago] {'asset_id_1': 7, 'param_1': 20}
+2026-04-23 02:19:03,697 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:03,697 | INFO | [cached since 3.179s ago] {'asset_id': 7, 'price': 0.999829, 'market_cap': 78318523219.60912, 'volume': 17457593641.526237, 'change_24h': 0.006832232928048704, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 3, 697191)}
+2026-04-23 02:19:03,759 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:03,759 | INFO | [cached since 3.166s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 7, 'signal_type__0': 'score', 'value__0': -0.5009374480261539, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 3, 759250), 'asset_id__1': 7, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 3, 759250)}
+2026-04-23 02:19:03,831 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:03,836 | INFO | [cached since 3.159s ago] {'asset_id': 7, 'market_cap': 78318523219.60912, 'volume': 17457593641.526237, 'change_24h': 0.006832232928048704, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 3, 831583)}
+2026-04-23 02:19:03,906 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:03,906 | INFO | [cached since 3.157s ago] {'asset_id': 7, 'price': 0.999829, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 3, 906036)}
+2026-04-23 02:19:03,970 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:03,970 | INFO | [cached since 3.856s ago] {'symbol_1': 'cardano', 'param_1': 1}
+2026-04-23 02:19:04,043 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:04,045 | INFO | [cached since 3.775s ago] {'asset_id_1': 8, 'param_1': 20}
+2026-04-23 02:19:04,118 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:04,122 | INFO | [cached since 3.694s ago] {'asset_id_1': 8, 'param_1': 20}
+2026-04-23 02:19:04,191 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:04,191 | INFO | [cached since 3.673s ago] {'asset_id': 8, 'price': 0.247311, 'market_cap': 9143889798.914412, 'volume': 397840048.0944547, 'change_24h': -3.2276113788404746, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 4, 191255)}
+2026-04-23 02:19:04,257 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:04,257 | INFO | [cached since 3.656s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 8, 'signal_type__0': 'score', 'value__0': -0.5836562063081109, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 4, 257264), 'asset_id__1': 8, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 4, 257264)}
+2026-04-23 02:19:04,320 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:04,320 | INFO | [cached since 3.651s ago] {'asset_id': 8, 'market_cap': 9143889798.914412, 'volume': 397840048.0944547, 'change_24h': -3.2276113788404746, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 4, 320759)}
+2026-04-23 02:19:04,396 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:04,396 | INFO | [cached since 3.646s ago] {'asset_id': 8, 'price': 0.247311, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 4, 396113)}
+2026-04-23 02:19:04,460 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:04,460 | INFO | [cached since 4.347s ago] {'symbol_1': 'dogecoin', 'param_1': 1}
+2026-04-23 02:19:04,524 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:04,537 | INFO | [cached since 4.266s ago] {'asset_id_1': 9, 'param_1': 20}
+2026-04-23 02:19:04,603 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:04,603 | INFO | [cached since 4.18s ago] {'asset_id_1': 9, 'param_1': 20}
+2026-04-23 02:19:04,683 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:04,683 | INFO | [cached since 4.166s ago] {'asset_id': 9, 'price': 0.096005, 'market_cap': 14790728132.393578, 'volume': 1683583999.6920056, 'change_24h': -0.41849467746609126, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 4, 683008)}
+2026-04-23 02:19:04,755 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:04,757 | INFO | [cached since 4.154s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 9, 'signal_type__0': 'score', 'value__0': 0.2219844345410501, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 4, 755195), 'asset_id__1': 9, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 4, 755195)}
+2026-04-23 02:19:04,827 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:04,828 | INFO | [cached since 4.152s ago] {'asset_id': 9, 'market_cap': 14790728132.393578, 'volume': 1683583999.6920056, 'change_24h': -0.41849467746609126, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 4, 827967)}
+2026-04-23 02:19:04,895 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:04,895 | INFO | [cached since 4.147s ago] {'asset_id': 9, 'price': 0.096005, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 4, 895891)}
+2026-04-23 02:19:04,957 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:04,966 | INFO | [cached since 4.847s ago] {'symbol_1': 'tron', 'param_1': 1}
+2026-04-23 02:19:05,036 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:05,038 | INFO | [cached since 4.767s ago] {'asset_id_1': 10, 'param_1': 20}
+2026-04-23 02:19:05,111 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:05,117 | INFO | [cached since 4.69s ago] {'asset_id_1': 10, 'param_1': 20}
+2026-04-23 02:19:05,191 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:05,191 | INFO | [cached since 4.678s ago] {'asset_id': 10, 'price': 0.32882, 'market_cap': 31163753477.55515, 'volume': 618505150.998581, 'change_24h': -0.9520494534423113, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 5, 191958)}
+2026-04-23 02:19:05,259 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:05,259 | INFO | [cached since 4.667s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 10, 'signal_type__0': 'score', 'value__0': -0.19182349097305584, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 5, 259344), 'asset_id__1': 10, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 5, 259344)}
+2026-04-23 02:19:05,341 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:05,343 | INFO | [cached since 4.668s ago] {'asset_id': 10, 'market_cap': 31163753477.55515, 'volume': 618505150.998581, 'change_24h': -0.9520494534423113, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 5, 341587)}
+2026-04-23 02:19:05,414 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:05,416 | INFO | [cached since 4.667s ago] {'asset_id': 10, 'price': 0.32882, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 5, 414679)}
+2026-04-23 02:19:05,489 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:05,489 | INFO | [cached since 5.371s ago] {'symbol_1': 'polkadot', 'param_1': 1}
+2026-04-23 02:19:05,563 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:05,563 | INFO | [cached since 5.294s ago] {'asset_id_1': 11, 'param_1': 20}
+2026-04-23 02:19:05,639 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:05,639 | INFO | [cached since 5.213s ago] {'asset_id_1': 11, 'param_1': 20}
+2026-04-23 02:19:05,701 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:05,717 | INFO | [cached since 5.198s ago] {'asset_id': 11, 'price': 1.26, 'market_cap': 2116911995.457735, 'volume': 146229766.44632572, 'change_24h': -4.475432071629425, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 5, 701840)}
+2026-04-23 02:19:05,783 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:05,783 | INFO | [cached since 5.187s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 11, 'signal_type__0': 'score', 'value__0': -1.5395629668220665, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 5, 783887), 'asset_id__1': 11, 'signal_type__1': 'state', 'value__1': -1, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 5, 783887)}
+2026-04-23 02:19:05,849 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:05,861 | INFO | [cached since 5.185s ago] {'asset_id': 11, 'market_cap': 2116911995.457735, 'volume': 146229766.44632572, 'change_24h': -4.475432071629425, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 5, 849454)}
+2026-04-23 02:19:05,928 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:05,928 | INFO | [cached since 5.18s ago] {'asset_id': 11, 'price': 1.26, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 5, 928275)}
+2026-04-23 02:19:06,016 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:06,018 | INFO | [cached since 5.899s ago] {'symbol_1': 'litecoin', 'param_1': 1}
+2026-04-23 02:19:06,089 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:06,089 | INFO | [cached since 5.819s ago] {'asset_id_1': 12, 'param_1': 20}
+2026-04-23 02:19:06,161 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:06,161 | INFO | [cached since 5.733s ago] {'asset_id_1': 12, 'param_1': 20}
+2026-04-23 02:19:06,229 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:06,229 | INFO | [cached since 5.712s ago] {'asset_id': 12, 'price': 55.19, 'market_cap': 4255808484.422067, 'volume': 352754020.7498992, 'change_24h': -1.584124784804716, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 6, 229171)}
+2026-04-23 02:19:06,296 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:06,296 | INFO | [cached since 5.695s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 12, 'signal_type__0': 'score', 'value__0': -0.20982928844008894, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 6, 296559), 'asset_id__1': 12, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 6, 296559)}
+2026-04-23 02:19:06,358 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:06,358 | INFO | [cached since 5.69s ago] {'asset_id': 12, 'market_cap': 4255808484.422067, 'volume': 352754020.7498992, 'change_24h': -1.584124784804716, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 6, 358655)}
+2026-04-23 02:19:06,435 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:06,435 | INFO | [cached since 5.686s ago] {'asset_id': 12, 'price': 55.19, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 6, 435753)}
+2026-04-23 02:19:06,503 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:06,503 | INFO | [cached since 6.39s ago] {'symbol_1': 'shiba-inu', 'param_1': 1}
+2026-04-23 02:19:06,581 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:06,583 | INFO | [cached since 6.312s ago] {'asset_id_1': 13, 'param_1': 20}
+2026-04-23 02:19:06,658 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:06,658 | INFO | [cached since 6.231s ago] {'asset_id_1': 13, 'param_1': 20}
+2026-04-23 02:19:06,725 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:06,725 | INFO | [cached since 6.215s ago] {'asset_id': 13, 'price': 6.1e-06, 'market_cap': 3592859334.619496, 'volume': 108998551.08884802, 'change_24h': -1.4994646841743855, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 6, 725082)}
+2026-04-23 02:19:06,804 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:06,804 | INFO | [cached since 6.202s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 13, 'signal_type__0': 'score', 'value__0': 0.4334374427535554, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 6, 800807), 'asset_id__1': 13, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 6, 800807)}
+2026-04-23 02:19:06,878 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:06,878 | INFO | [cached since 6.202s ago] {'asset_id': 13, 'market_cap': 3592859334.619496, 'volume': 108998551.08884802, 'change_24h': -1.4994646841743855, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 6, 878574)}
+2026-04-23 02:19:06,945 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:06,945 | INFO | [cached since 6.198s ago] {'asset_id': 13, 'price': 6.1e-06, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 6, 945677)}
+2026-04-23 02:19:07,008 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:07,017 | INFO | [cached since 6.898s ago] {'symbol_1': 'avalanche-2', 'param_1': 1}
+2026-04-23 02:19:07,071 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:07,071 | INFO | [cached since 6.815s ago] {'asset_id_1': 14, 'param_1': 20}
+2026-04-23 02:19:07,151 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:07,153 | INFO | [cached since 6.725s ago] {'asset_id_1': 14, 'param_1': 20}
+2026-04-23 02:19:07,222 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:07,222 | INFO | [cached since 6.704s ago] {'asset_id': 14, 'price': 9.29, 'market_cap': 4016678789.5976005, 'volume': 263434987.97820824, 'change_24h': -3.188845326129966, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 7, 222571)}
+2026-04-23 02:19:07,284 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:07,284 | INFO | [cached since 6.688s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 14, 'signal_type__0': 'score', 'value__0': -0.5389199984484832, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 7, 284302), 'asset_id__1': 14, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 7, 284302)}
+2026-04-23 02:19:07,350 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:07,358 | INFO | [cached since 6.681s ago] {'asset_id': 14, 'market_cap': 4016678789.5976005, 'volume': 263434987.97820824, 'change_24h': -3.188845326129966, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 7, 350966)}
+2026-04-23 02:19:07,422 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:07,422 | INFO | [cached since 6.676s ago] {'asset_id': 14, 'price': 9.29, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 7, 422193)}
+2026-04-23 02:19:07,486 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:07,486 | INFO | [cached since 7.374s ago] {'symbol_1': 'dai', 'param_1': 1}
+2026-04-23 02:19:07,551 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:07,551 | INFO | [cached since 7.29s ago] {'asset_id_1': 15, 'param_1': 20}
+2026-04-23 02:19:07,632 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:07,632 | INFO | [cached since 7.204s ago] {'asset_id_1': 15, 'param_1': 20}
+2026-04-23 02:19:07,700 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:07,700 | INFO | [cached since 7.183s ago] {'asset_id': 15, 'price': 0.999683, 'market_cap': 4427982987.639652, 'volume': 293064523.32224727, 'change_24h': -0.011841053893076672, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 7, 700734)}
+2026-04-23 02:19:07,757 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:07,757 | INFO | [cached since 7.168s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 15, 'signal_type__0': 'score', 'value__0': 0.03020734178903231, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 7, 757074), 'asset_id__1': 15, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 7, 757074)}
+2026-04-23 02:19:07,839 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:07,839 | INFO | [cached since 7.163s ago] {'asset_id': 15, 'market_cap': 4427982987.639652, 'volume': 293064523.32224727, 'change_24h': -0.011841053893076672, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 7, 839014)}
+2026-04-23 02:19:07,904 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:07,904 | INFO | [cached since 7.159s ago] {'asset_id': 15, 'price': 0.999683, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 7, 904702)}
+2026-04-23 02:19:07,967 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:07,967 | INFO | [cached since 7.858s ago] {'symbol_1': 'chainlink', 'param_1': 1}
+2026-04-23 02:19:08,048 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:08,051 | INFO | [cached since 7.781s ago] {'asset_id_1': 16, 'param_1': 20}
+2026-04-23 02:19:08,126 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:08,136 | INFO | [cached since 7.708s ago] {'asset_id_1': 16, 'param_1': 20}
+2026-04-23 02:19:08,208 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:08,212 | INFO | [cached since 7.694s ago] {'asset_id': 16, 'price': 9.22, 'market_cap': 6701799147.864405, 'volume': 303995322.6935854, 'change_24h': -3.163366051546858, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 8, 208195)}
+2026-04-23 02:19:08,292 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:08,308 | INFO | [cached since 7.692s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 16, 'signal_type__0': 'score', 'value__0': -0.5918706912298078, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 8, 292718), 'asset_id__1': 16, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 8, 292718)}
+2026-04-23 02:19:08,425 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:08,427 | INFO | [cached since 7.751s ago] {'asset_id': 16, 'market_cap': 6701799147.864405, 'volume': 303995322.6935854, 'change_24h': -3.163366051546858, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 8, 425454)}
+2026-04-23 02:19:08,498 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:08,498 | INFO | [cached since 7.75s ago] {'asset_id': 16, 'price': 9.22, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 8, 498858)}
+2026-04-23 02:19:08,574 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:08,574 | INFO | [cached since 8.456s ago] {'symbol_1': 'uniswap', 'param_1': 1}
+2026-04-23 02:19:08,645 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:08,645 | INFO | [cached since 8.376s ago] {'asset_id_1': 17, 'param_1': 20}
+2026-04-23 02:19:08,719 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:08,720 | INFO | [cached since 8.293s ago] {'asset_id_1': 17, 'param_1': 20}
+2026-04-23 02:19:08,794 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:08,796 | INFO | [cached since 8.277s ago] {'asset_id': 17, 'price': 3.28, 'market_cap': 2078881126.8970165, 'volume': 166595439.36676073, 'change_24h': -2.351557809464443, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 8, 794340)}
+2026-04-23 02:19:08,864 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:08,864 | INFO | [cached since 8.264s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 17, 'signal_type__0': 'score', 'value__0': 0.5193742727104314, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 8, 864010), 'asset_id__1': 17, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 8, 864010)}
+2026-04-23 02:19:08,931 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:08,931 | INFO | [cached since 8.262s ago] {'asset_id': 17, 'market_cap': 2078881126.8970165, 'volume': 166595439.36676073, 'change_24h': -2.351557809464443, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 8, 931889)}
+2026-04-23 02:19:09,016 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:09,020 | INFO | [cached since 8.269s ago] {'asset_id': 17, 'price': 3.28, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 9, 16567)}
+2026-04-23 02:19:09,086 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:09,086 | INFO | [cached since 8.969s ago] {'symbol_1': 'leo-token', 'param_1': 1}
+2026-04-23 02:19:09,151 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:09,151 | INFO | [cached since 8.886s ago] {'asset_id_1': 18, 'param_1': 20}
+2026-04-23 02:19:09,219 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:09,219 | INFO | [cached since 8.797s ago] {'asset_id_1': 18, 'param_1': 20}
+2026-04-23 02:19:09,294 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:09,296 | INFO | [cached since 8.777s ago] {'asset_id': 18, 'price': 10.29, 'market_cap': 9477658343.286747, 'volume': 621615.81223442, 'change_24h': -0.7245247742252304, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 9, 278859)}
+2026-04-23 02:19:09,362 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:09,362 | INFO | [cached since 8.761s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 18, 'signal_type__0': 'score', 'value__0': -0.6996432239544441, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 9, 362205), 'asset_id__1': 18, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 9, 362205)}
+2026-04-23 02:19:09,423 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:09,423 | INFO | [cached since 8.756s ago] {'asset_id': 18, 'market_cap': 9477658343.286747, 'volume': 621615.81223442, 'change_24h': -0.7245247742252304, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 9, 423217)}
+2026-04-23 02:19:09,486 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:09,486 | INFO | [cached since 8.752s ago] {'asset_id': 18, 'price': 10.29, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 9, 486784)}
+2026-04-23 02:19:09,571 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:09,571 | INFO | [cached since 9.453s ago] {'symbol_1': 'cosmos', 'param_1': 1}
+2026-04-23 02:19:09,646 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:09,646 | INFO | [cached since 9.376s ago] {'asset_id_1': 19, 'param_1': 20}
+2026-04-23 02:19:09,721 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:09,721 | INFO | [cached since 9.295s ago] {'asset_id_1': 19, 'param_1': 20}
+2026-04-23 02:19:09,790 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:09,800 | INFO | [cached since 9.281s ago] {'asset_id': 19, 'price': 1.85, 'market_cap': 932884745.8456342, 'volume': 42900331.32593171, 'change_24h': -2.958598769465304, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 9, 790763)}
+2026-04-23 02:19:09,857 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:09,869 | INFO | [cached since 9.267s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 19, 'signal_type__0': 'score', 'value__0': -0.2832495976698509, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 9, 857443), 'asset_id__1': 19, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 9, 857443)}
+2026-04-23 02:19:09,933 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:09,933 | INFO | [cached since 9.266s ago] {'asset_id': 19, 'market_cap': 932884745.8456342, 'volume': 42900331.32593171, 'change_24h': -2.958598769465304, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 9, 933273)}
+2026-04-23 02:19:10,012 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:10,018 | INFO | [cached since 9.268s ago] {'asset_id': 19, 'price': 1.85, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 10, 12595)}
+2026-04-23 02:19:10,090 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:10,091 | INFO | [cached since 9.972s ago] {'symbol_1': 'stellar', 'param_1': 1}
+2026-04-23 02:19:10,156 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:10,156 | INFO | [cached since 9.892s ago] {'asset_id_1': 20, 'param_1': 20}
+2026-04-23 02:19:10,235 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:10,235 | INFO | [cached since 9.809s ago] {'asset_id_1': 20, 'param_1': 20}
+2026-04-23 02:19:10,303 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:10,303 | INFO | [cached since 9.795s ago] {'asset_id': 20, 'price': 0.17505, 'market_cap': 5818706639.872898, 'volume': 119443407.29499806, 'change_24h': -3.2471049349422487, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 10, 303716)}
+2026-04-23 02:19:10,394 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:10,396 | INFO | [cached since 9.794s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 20, 'signal_type__0': 'score', 'value__0': -0.49690039360692584, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 10, 394967), 'asset_id__1': 20, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 10, 394967)}
+2026-04-23 02:19:10,492 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:10,492 | INFO | [cached since 9.816s ago] {'asset_id': 20, 'market_cap': 5818706639.872898, 'volume': 119443407.29499806, 'change_24h': -3.2471049349422487, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 10, 490445)}
+2026-04-23 02:19:10,554 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:10,554 | INFO | [cached since 9.816s ago] {'asset_id': 20, 'price': 0.17505, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 10, 554321)}
+2026-04-23 02:19:10,634 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:10,634 | INFO | [cached since 10.52s ago] {'symbol_1': 'monero', 'param_1': 1}
+2026-04-23 02:19:10,697 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:10,697 | INFO | [cached since 10.44s ago] {'asset_id_1': 21, 'param_1': 20}
+2026-04-23 02:19:10,778 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:10,778 | INFO | [cached since 10.35s ago] {'asset_id_1': 21, 'param_1': 20}
+2026-04-23 02:19:10,844 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:10,850 | INFO | [cached since 10.33s ago] {'asset_id': 21, 'price': 367.1, 'market_cap': 6756755041.883689, 'volume': 164099039.17889464, 'change_24h': -4.333748004920533, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 10, 844277)}
+2026-04-23 02:19:10,907 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:10,907 | INFO | [cached since 10.32s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 21, 'signal_type__0': 'score', 'value__0': -0.3188918259002369, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 10, 907282), 'asset_id__1': 21, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 10, 907282)}
+2026-04-23 02:19:10,988 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:10,988 | INFO | [cached since 10.31s ago] {'asset_id': 21, 'market_cap': 6756755041.883689, 'volume': 164099039.17889464, 'change_24h': -4.333748004920533, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 10, 986352)}
+2026-04-23 02:19:11,058 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:11,068 | INFO | [cached since 10.32s ago] {'asset_id': 21, 'price': 367.1, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 11, 58825)}
+2026-04-23 02:19:11,141 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:11,142 | INFO | [cached since 11.02s ago] {'symbol_1': 'ethereum-classic', 'param_1': 1}
+2026-04-23 02:19:11,212 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:11,225 | INFO | [cached since 10.95s ago] {'asset_id_1': 22, 'param_1': 20}
+2026-04-23 02:19:11,300 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:11,305 | INFO | [cached since 10.88s ago] {'asset_id_1': 22, 'param_1': 20}
+2026-04-23 02:19:11,386 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:11,390 | INFO | [cached since 10.87s ago] {'asset_id': 22, 'price': 8.44, 'market_cap': 1320063678.0995448, 'volume': 39187401.14534162, 'change_24h': -1.7873618930014952, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 11, 386540)}
+2026-04-23 02:19:11,451 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:11,451 | INFO | [cached since 10.86s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 22, 'signal_type__0': 'score', 'value__0': 0.08058113985647014, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 11, 451961), 'asset_id__1': 22, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 11, 451961)}
+2026-04-23 02:19:11,527 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:11,527 | INFO | [cached since 10.85s ago] {'asset_id': 22, 'market_cap': 1320063678.0995448, 'volume': 39187401.14534162, 'change_24h': -1.7873618930014952, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 11, 527791)}
+2026-04-23 02:19:11,594 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:11,594 | INFO | [cached since 10.85s ago] {'asset_id': 22, 'price': 8.44, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 11, 594885)}
+2026-04-23 02:19:11,659 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:11,659 | INFO | [cached since 11.55s ago] {'symbol_1': 'okb', 'param_1': 1}
+2026-04-23 02:19:11,734 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:11,734 | INFO | [cached since 11.47s ago] {'asset_id_1': 23, 'param_1': 20}
+2026-04-23 02:19:11,813 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:11,813 | INFO | [cached since 11.39s ago] {'asset_id_1': 23, 'param_1': 20}
+2026-04-23 02:19:11,882 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:11,882 | INFO | [cached since 11.37s ago] {'asset_id': 23, 'price': 83.71, 'market_cap': 1757781476.4837782, 'volume': 17688816.577669587, 'change_24h': -0.5856510499374157, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 11, 882078)}
+2026-04-23 02:19:11,961 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:11,963 | INFO | [cached since 11.36s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 23, 'signal_type__0': 'score', 'value__0': 0.29778340731558955, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 11, 961930), 'asset_id__1': 23, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 11, 961930)}
+2026-04-23 02:19:12,024 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:12,024 | INFO | [cached since 11.36s ago] {'asset_id': 23, 'market_cap': 1757781476.4837782, 'volume': 17688816.577669587, 'change_24h': -0.5856510499374157, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 12, 24043)}
+2026-04-23 02:19:12,101 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:12,101 | INFO | [cached since 11.36s ago] {'asset_id': 23, 'price': 83.71, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 12, 101806)}
+2026-04-23 02:19:12,167 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:12,167 | INFO | [cached since 12.06s ago] {'symbol_1': 'filecoin', 'param_1': 1}
+2026-04-23 02:19:12,247 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:12,247 | INFO | [cached since 11.98s ago] {'asset_id_1': 24, 'param_1': 20}
+2026-04-23 02:19:12,320 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:12,320 | INFO | [cached since 11.89s ago] {'asset_id_1': 24, 'param_1': 20}
+2026-04-23 02:19:12,397 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:12,397 | INFO | [cached since 11.88s ago] {'asset_id': 24, 'price': 0.924032, 'market_cap': 713925707.2013776, 'volume': 77890902.41399808, 'change_24h': -3.377404415495026, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 12, 397002)}
+2026-04-23 02:19:12,467 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:12,467 | INFO | [cached since 11.87s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 24, 'signal_type__0': 'score', 'value__0': 0.4276377992700442, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 12, 467460), 'asset_id__1': 24, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 12, 467460)}
+2026-04-23 02:19:12,552 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:12,554 | INFO | [cached since 11.88s ago] {'asset_id': 24, 'market_cap': 713925707.2013776, 'volume': 77890902.41399808, 'change_24h': -3.377404415495026, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 12, 552405)}
+2026-04-23 02:19:12,619 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:12,619 | INFO | [cached since 11.88s ago] {'asset_id': 24, 'price': 0.924032, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 12, 619846)}
+2026-04-23 02:19:12,700 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:12,700 | INFO | [cached since 12.58s ago] {'symbol_1': 'internet-computer', 'param_1': 1}
+2026-04-23 02:19:12,761 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:12,773 | INFO | [cached since 12.5s ago] {'asset_id_1': 25, 'param_1': 20}
+2026-04-23 02:19:12,846 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:12,846 | INFO | [cached since 12.42s ago] {'asset_id_1': 25, 'param_1': 20}
+2026-04-23 02:19:12,916 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:12,916 | INFO | [cached since 12.4s ago] {'asset_id': 25, 'price': 2.47, 'market_cap': 1362183753.157942, 'volume': 40907420.12035811, 'change_24h': -2.216463876742834, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 12, 916048)}
+2026-04-23 02:19:12,992 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:12,992 | INFO | [cached since 12.39s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 25, 'signal_type__0': 'score', 'value__0': 0.45692450881020397, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 12, 982280), 'asset_id__1': 25, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 12, 982280)}
+2026-04-23 02:19:13,078 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:13,079 | INFO | [cached since 12.4s ago] {'asset_id': 25, 'market_cap': 1362183753.157942, 'volume': 40907420.12035811, 'change_24h': -2.216463876742834, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 13, 77150)}
+2026-04-23 02:19:13,141 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:13,141 | INFO | [cached since 12.4s ago] {'asset_id': 25, 'price': 2.47, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 13, 141950)}
+2026-04-23 02:19:13,217 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:13,217 | INFO | [cached since 13.1s ago] {'symbol_1': 'aptos', 'param_1': 1}
+2026-04-23 02:19:13,289 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:13,289 | INFO | [cached since 13.02s ago] {'asset_id_1': 26, 'param_1': 20}
+2026-04-23 02:19:13,365 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:13,365 | INFO | [cached since 12.94s ago] {'asset_id_1': 26, 'param_1': 20}
+2026-04-23 02:19:13,443 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:13,443 | INFO | [cached since 12.93s ago] {'asset_id': 26, 'price': 0.942644, 'market_cap': 760476045.9505051, 'volume': 103409826.66307697, 'change_24h': -1.1224420958587074, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 13, 443457)}
+2026-04-23 02:19:13,519 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:13,524 | INFO | [cached since 12.92s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 26, 'signal_type__0': 'score', 'value__0': 0.41847400696487164, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 13, 519095), 'asset_id__1': 26, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 13, 519095)}
+2026-04-23 02:19:13,597 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:13,601 | INFO | [cached since 12.93s ago] {'asset_id': 26, 'market_cap': 760476045.9505051, 'volume': 103409826.66307697, 'change_24h': -1.1224420958587074, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 13, 597797)}
+2026-04-23 02:19:13,670 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:13,674 | INFO | [cached since 12.92s ago] {'asset_id': 26, 'price': 0.942644, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 13, 670245)}
+2026-04-23 02:19:13,757 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:13,797 | INFO | [cached since 13.68s ago] {'symbol_1': 'hedera-hashgraph', 'param_1': 1}
+2026-04-23 02:19:13,867 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:13,869 | INFO | [cached since 13.6s ago] {'asset_id_1': 27, 'param_1': 20}
+2026-04-23 02:19:13,943 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:13,943 | INFO | [cached since 13.52s ago] {'asset_id_1': 27, 'param_1': 20}
+2026-04-23 02:19:14,015 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:14,019 | INFO | [cached since 13.5s ago] {'asset_id': 27, 'price': 0.090815, 'market_cap': 3936407032.382428, 'volume': 87933812.14061867, 'change_24h': -0.03145525583703763, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 14, 15181)}
+2026-04-23 02:19:14,089 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:14,091 | INFO | [cached since 13.49s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 27, 'signal_type__0': 'score', 'value__0': 0.5222547262666953, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 14, 89620), 'asset_id__1': 27, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 14, 89620)}
+2026-04-23 02:19:14,152 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:14,152 | INFO | [cached since 13.49s ago] {'asset_id': 27, 'market_cap': 3936407032.382428, 'volume': 87933812.14061867, 'change_24h': -0.03145525583703763, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 14, 152966)}
+2026-04-23 02:19:14,217 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:14,217 | INFO | [cached since 13.48s ago] {'asset_id': 27, 'price': 0.090815, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 14, 217834)}
+2026-04-23 02:19:14,306 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:14,306 | INFO | [cached since 14.19s ago] {'symbol_1': 'vechain', 'param_1': 1}
+2026-04-23 02:19:14,380 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:14,380 | INFO | [cached since 14.11s ago] {'asset_id_1': 28, 'param_1': 20}
+2026-04-23 02:19:14,453 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:14,455 | INFO | [cached since 14.03s ago] {'asset_id_1': 28, 'param_1': 20}
+2026-04-23 02:19:14,528 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:14,530 | INFO | [cached since 14.01s ago] {'asset_id': 28, 'price': 0.00709858, 'market_cap': 610352238.7320164, 'volume': 14909631.458276918, 'change_24h': -2.8271190922930396, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 14, 528094)}
+2026-04-23 02:19:14,602 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:14,602 | INFO | [cached since 14s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 28, 'signal_type__0': 'score', 'value__0': 0.019803457455753792, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 14, 598217), 'asset_id__1': 28, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 14, 598217)}
+2026-04-23 02:19:14,667 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:14,679 | INFO | [cached since 14s ago] {'asset_id': 28, 'market_cap': 610352238.7320164, 'volume': 14909631.458276918, 'change_24h': -2.8271190922930396, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 14, 667336)}
+2026-04-23 02:19:14,750 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:14,754 | INFO | [cached since 14s ago] {'asset_id': 28, 'price': 0.00709858, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 14, 741620)}
+2026-04-23 02:19:14,831 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:14,831 | INFO | [cached since 14.71s ago] {'symbol_1': 'quant-network', 'param_1': 1}
+2026-04-23 02:19:14,904 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:14,904 | INFO | [cached since 14.63s ago] {'asset_id_1': 29, 'param_1': 20}
+2026-04-23 02:19:14,976 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:14,976 | INFO | [cached since 14.55s ago] {'asset_id_1': 29, 'param_1': 20}
+2026-04-23 02:19:15,054 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:15,055 | INFO | [cached since 14.54s ago] {'asset_id': 29, 'price': 73.37, 'market_cap': 1067484250.7439444, 'volume': 8517353.267668886, 'change_24h': -1.5422525612729074, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 15, 54839)}
+2026-04-23 02:19:15,131 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:15,131 | INFO | [cached since 14.53s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 29, 'signal_type__0': 'score', 'value__0': -0.26211660254035496, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 15, 131674), 'asset_id__1': 29, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 15, 131674)}
+2026-04-23 02:19:15,202 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:15,202 | INFO | [cached since 14.53s ago] {'asset_id': 29, 'market_cap': 1067484250.7439444, 'volume': 8517353.267668886, 'change_24h': -1.5422525612729074, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 15, 202741)}
+2026-04-23 02:19:15,270 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:15,273 | INFO | [cached since 14.52s ago] {'asset_id': 29, 'price': 73.37, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 15, 270932)}
+2026-04-23 02:19:15,333 | INFO | SELECT assets.id AS assets_id, assets.symbol AS assets_symbol, assets.name AS assets_name 
+FROM assets 
+WHERE assets.symbol = %(symbol_1)s 
+ LIMIT %(param_1)s
+2026-04-23 02:19:15,333 | INFO | [cached since 15.22s ago] {'symbol_1': 'arbitrum', 'param_1': 1}
+2026-04-23 02:19:15,409 | INFO | SELECT price_history.id AS price_history_id, price_history.asset_id AS price_history_asset_id, price_history.price AS price_history_price, price_history.collected_at AS price_history_collected_at 
+FROM price_history 
+WHERE price_history.asset_id = %(asset_id_1)s ORDER BY price_history.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:15,409 | INFO | [cached since 15.14s ago] {'asset_id_1': 30, 'param_1': 20}
+2026-04-23 02:19:15,482 | INFO | SELECT market_data.id AS market_data_id, market_data.asset_id AS market_data_asset_id, market_data.market_cap AS market_data_market_cap, market_data.volume AS market_data_volume, market_data.change_24h AS market_data_change_24h, market_data.collected_at AS market_data_collected_at 
+FROM market_data 
+WHERE market_data.asset_id = %(asset_id_1)s ORDER BY market_data.collected_at DESC 
+ LIMIT %(param_1)s
+2026-04-23 02:19:15,482 | INFO | [cached since 15.05s ago] {'asset_id_1': 30, 'param_1': 20}
+2026-04-23 02:19:15,555 | INFO | INSERT INTO live_market (asset_id, price, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(price)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING live_market.id
+2026-04-23 02:19:15,555 | INFO | [cached since 15.04s ago] {'asset_id': 30, 'price': 0.125011, 'market_cap': 755504650.1010716, 'volume': 95267899.91085093, 'change_24h': -3.183763066433856, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 15, 555116)}
+2026-04-23 02:19:15,626 | INFO | INSERT INTO live_signals (asset_id, signal_type, value, created_at) SELECT p0::INTEGER, p1::VARCHAR, p2::FLOAT, p3::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES (%(asset_id__0)s, %(signal_type__0)s, %(value__0)s, %(created_at__0)s, 0), (%(asset_id__1)s, %(signal_type__1)s, %(value__1)s, %(created_at__1)s, 1)) AS imp_sen(p0, p1, p2, p3, sen_counter) ORDER BY sen_counter RETURNING live_signals.id, live_signals.id AS id__1
+2026-04-23 02:19:15,626 | INFO | [cached since 15.02s ago (insertmanyvalues) 1/1 (ordered)] {'asset_id__0': 30, 'signal_type__0': 'score', 'value__0': 0.13803723735164547, 'created_at__0': datetime.datetime(2026, 4, 23, 5, 19, 15, 626188), 'asset_id__1': 30, 'signal_type__1': 'state', 'value__1': 0, 'created_at__1': datetime.datetime(2026, 4, 23, 5, 19, 15, 626188)}
+2026-04-23 02:19:15,696 | INFO | INSERT INTO market_data (asset_id, market_cap, volume, change_24h, collected_at) VALUES (%(asset_id)s, %(market_cap)s, %(volume)s, %(change_24h)s, %(collected_at)s) RETURNING market_data.id
+2026-04-23 02:19:15,696 | INFO | [cached since 15.02s ago] {'asset_id': 30, 'market_cap': 755504650.1010716, 'volume': 95267899.91085093, 'change_24h': -3.183763066433856, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 15, 696416)}
+2026-04-23 02:19:15,767 | INFO | INSERT INTO price_history (asset_id, price, collected_at) VALUES (%(asset_id)s, %(price)s, %(collected_at)s) RETURNING price_history.id
+2026-04-23 02:19:15,767 | INFO | [cached since 15.02s ago] {'asset_id': 30, 'price': 0.125011, 'collected_at': datetime.datetime(2026, 4, 23, 5, 19, 15, 767665)}
+2026-04-23 02:38:01,059 | INFO | Scheduler initialized
+2026-04-23 02:38:01,077 | INFO | Cycle started
+2026-04-23 02:38:26,321 | INFO | [ALERT] bitcoin strong bullish(-2.63)
+2026-04-23 02:38:26,321 | INFO | [ALERT] ethereum strong bullish(-2.83)
+2026-04-23 02:38:26,321 | INFO | [ALERT] binancecoin strong bullish(-1.79)
+2026-04-23 02:38:26,323 | INFO | [ALERT] solana strong bullish(-9.38)
+2026-04-23 02:38:26,323 | INFO | [ALERT] cardano strong bullish(-1.51)
+2026-04-23 02:38:26,323 | INFO | [ALERT] dogecoin strong bullish(-2.62)
+2026-04-23 02:38:26,323 | INFO | [ALERT] chainlink strong bullish(-1.94)
+2026-04-23 02:38:26,325 | INFO | [ALERT] okb strong bullish(-1.87)
+2026-04-23 02:38:26,325 | INFO | [ALERT] optimism strong bullish(-3.02)
+2026-04-23 02:38:26,325 | INFO | [ALERT] aave strong bullish(-2.96)
+2026-04-23 02:38:26,325 | INFO | [ALERT] maker strong bullish(-2.26)
+2026-04-23 02:38:26,325 | INFO | [ALERT] axie-infinity strong bullish(-2.35)
+2026-04-23 02:38:26,327 | INFO | [ALERT] zilliqa strong bullish(-1.73)
+2026-04-23 02:38:26,391 | INFO | Cycle finished in 25.31s
+2026-04-23 02:38:26,391 | INFO | Sleeping 4.69s
+2026-04-23 02:38:31,078 | INFO | Cycle started
+2026-04-23 02:38:56,350 | INFO | [ALERT] bitcoin strong bullish(-2.18)
+2026-04-23 02:38:56,350 | INFO | [ALERT] ethereum strong bullish(-2.32)
+2026-04-23 02:38:56,350 | INFO | [ALERT] binancecoin strong bullish(-2.22)
+2026-04-23 02:38:56,350 | INFO | [ALERT] solana strong bullish(-3.41)
+2026-04-23 02:38:56,350 | INFO | [ALERT] dogecoin strong bullish(-2.18)
+2026-04-23 02:38:56,350 | INFO | [ALERT] chainlink strong bullish(-1.72)
+2026-04-23 02:38:56,350 | INFO | [ALERT] optimism strong bullish(-2.41)
+2026-04-23 02:38:56,350 | INFO | [ALERT] aave strong bullish(-2.36)
+2026-04-23 02:38:56,350 | INFO | [ALERT] maker strong bullish(-1.70)
+2026-04-23 02:38:56,350 | INFO | [ALERT] axie-infinity strong bullish(-2.01)
+2026-04-23 02:38:56,416 | INFO | Cycle finished in 25.34s
+2026-04-23 02:38:56,416 | INFO | Sleeping 4.66s
+2026-04-23 02:39:01,084 | INFO | Cycle started
+2026-04-23 02:39:26,177 | INFO | [ALERT] bitcoin strong bullish(-1.88)
+2026-04-23 02:39:26,177 | INFO | [ALERT] ethereum strong bullish(-1.98)
+2026-04-23 02:39:26,177 | INFO | [ALERT] binancecoin strong bullish(-1.92)
+2026-04-23 02:39:26,177 | INFO | [ALERT] solana strong bullish(-2.54)
+2026-04-23 02:39:26,179 | INFO | [ALERT] dogecoin strong bullish(-1.92)
+2026-04-23 02:39:26,179 | INFO | [ALERT] chainlink strong bullish(-1.62)
+2026-04-23 02:39:26,179 | INFO | [ALERT] optimism strong bullish(-2.05)
+2026-04-23 02:39:26,179 | INFO | [ALERT] aave strong bullish(-2.02)
+2026-04-23 02:39:26,179 | INFO | [ALERT] axie-infinity strong bullish(-1.78)
+2026-04-23 02:39:26,250 | INFO | Cycle finished in 25.17s
+2026-04-23 02:39:26,252 | INFO | Sleeping 4.83s
+2026-04-23 02:39:31,085 | INFO | Cycle started
