@@ -1,10 +1,10 @@
-#  Hybrid Engine
+# 🧠 Hybrid Engine
 
 ### Real-Time Market Intelligence System
 
 ---
 
-##  Overview
+## 🚀 Overview
 
 **Hybrid Engine** is a real-time market intelligence system designed to collect, process, analyze, and visualize financial data using a **hybrid architecture (Live + Historical)**.
 
@@ -19,244 +19,237 @@ The system is engineered to simulate a **lightweight trading intelligence pipeli
 
 ---
 
-##  Architecture
+## 🧩 Architecture
 
 ```
-                  ┌────────────────────┐
-                                  │   Scheduler        │
-                                                  │ (Automation Loop)  │
-                                                                  └────────┬───────────┘
-                                                                                           │
-                                                                                                                   ▼
-                                                                                                                                  ┌────────────────────┐
-                                                                                                                                                  │   Pipeline         │
-                                                                                                                                                                  │ Data Processing    │
-                                                                                                                                                                                  └────────┬───────────┘
-                                                                                                                                                                                                           │
-                                                                                                                                                                                                                  ┌────────────────┼────────────────┐
-                                                                                                                                                                                                                          ▼                ▼                ▼
-                                                                                                                                                                                                                            Live Tables     Historical Tables    Signals
-                                                                                                                                                                                                                             (Real-Time)       (Long-Term)       (Intelligence)
-                                                                                                                                                                                                                                    │                │                │
-                                                                                                                                                                                                                                            └────────────┬───┴───────────────┘
-                                                                                                                                                                                                                                                                 ▼
-                                                                                                                                                                                                                                                                               ┌──────────────┐
-                                                                                                                                                                                                                                                                                             │  PostgreSQL  │
-                                                                                                                                                                                                                                                                                                           │   (Neon)     │
-                                                                                                                                                                                                                                                                                                                         └──────┬───────┘
-                                                                                                                                                                                                                                                                                                                                              │
-                                                                                                                                                                                                                                                                                                                                                      ┌─────────────┴─────────────┐
-                                                                                                                                                                                                                                                                                                                                                              ▼                           ▼
-                                                                                                                                                                                                                                                                                                                                                               Textual Dashboard          Streamlit Dashboard
-                                                                                                                                                                                                                                                                                                                                                               (Terminal - Technical)     (Web - Analytical)
-                                                                                                                                                                                                                                                                                                                                                              ```
+                ┌────────────────────┐
+                │   Scheduler        │
+                │ (Automation Loop)  │
+                └────────┬───────────┘
+                         │
+                         ▼
+                ┌────────────────────┐
+                │   Pipeline         │
+                │ Data Processing    │
+                └────────┬───────────┘
+                         │
+        ┌────────────────┼────────────────┐
+        ▼                ▼                ▼
+  Live Tables     Historical Tables    Signals
+ (Real-Time)       (Long-Term)       (Intelligence)
+        │                │                │
+        └────────────┬───┴───────────────┘
+                     ▼
+               ┌──────────────┐
+               │  PostgreSQL  │
+               │   (Neon)     │
+               └──────┬───────┘
+                      │
+        ┌─────────────┴─────────────┐
+        ▼                           ▼
+ Textual Dashboard          Streamlit Dashboard
+ (Terminal - Technical)     (Web - Analytical)
+```
 
-                                                                                                                                                                                                                                                                                                                                                                ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                ## ⚙️ Core Components
+## ⚙️ Core Components
 
-                                                                                                                                                                                                                                                                                                                                                                ###  Scheduler (`automation/scheduler.py`)
+### 🔹 Scheduler (`automation/scheduler.py`)
 
-                                                                                                                                                                                                                                                                                                                                                                * Controls execution cycles
-                                                                                                                                                                                                                                                                                                                                                                * Ensures consistent intervals
-                                                                                                                                                                                                                                                                                                                                                                * Triggers pipeline and alert system
+* Controls execution cycles
+* Ensures consistent intervals
+* Triggers pipeline and alert system
 
-                                                                                                                                                                                                                                                                                                                                                                ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                ###  Pipeline (`services/pipeline.py`)
+### 🔹 Pipeline (`services/pipeline.py`)
 
-                                                                                                                                                                                                                                                                                                                                                                * Fetches market data
-                                                                                                                                                                                                                                                                                                                                                                * Computes statistical signals (z-score based)
-                                                                                                                                                                                                                                                                                                                                                                * Maintains hybrid data structure:
+* Fetches market data
+* Computes statistical signals (z-score based)
+* Maintains hybrid data structure:
 
-                                                                                                                                                                                                                                                                                                                                                                  * `LiveMarket`, `LiveSignal`
-                                                                                                                                                                                                                                                                                                                                                                    * `PriceHistory`, `MarketData`
+  * `LiveMarket`, `LiveSignal`
+  * `PriceHistory`, `MarketData`
 
-                                                                                                                                                                                                                                                                                                                                                                    ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                    ###  Signals Engine (`core/signals.py`)
+### 🔹 Signals Engine (`core/signals.py`)
 
-                                                                                                                                                                                                                                                                                                                                                                    * Detects:
+* Detects:
 
-                                                                                                                                                                                                                                                                                                                                                                      * Price anomalies
-                                                                                                                                                                                                                                                                                                                                                                        * Volume spikes
-                                                                                                                                                                                                                                                                                                                                                                          * Volatility changes
-                                                                                                                                                                                                                                                                                                                                                                          * Produces structured signals used in scoring
+  * Price anomalies
+  * Volume spikes
+  * Volatility changes
+* Produces structured signals used in scoring
 
-                                                                                                                                                                                                                                                                                                                                                                          ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                          ###  Database Layer (`database/`)
+### 🔹 Database Layer (`database/`)
 
-                                                                                                                                                                                                                                                                                                                                                                          * PostgreSQL (Neon)
-                                                                                                                                                                                                                                                                                                                                                                          * SQLAlchemy ORM
-                                                                                                                                                                                                                                                                                                                                                                          * Clean separation between:
+* PostgreSQL (Neon)
+* SQLAlchemy ORM
+* Clean separation between:
 
-                                                                                                                                                                                                                                                                                                                                                                            * Live data (ephemeral)
-                                                                                                                                                                                                                                                                                                                                                                              * Historical data (persistent)
+  * Live data (ephemeral)
+  * Historical data (persistent)
 
-                                                                                                                                                                                                                                                                                                                                                                              ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                              ###  Dashboards
+### 🔹 Dashboards
 
-                                                                                                                                                                                                                                                                                                                                                                              ####  Textual (Terminal UI)
+#### 🖥 Textual (Terminal UI)
 
-                                                                                                                                                                                                                                                                                                                                                                              * Real-time monitoring
-                                                                                                                                                                                                                                                                                                                                                                              * High-frequency updates
-                                                                                                                                                                                                                                                                                                                                                                              * Technical inspection of signals
+* Real-time monitoring
+* High-frequency updates
+* Technical inspection of signals
 
-                                                                                                                                                                                                                                                                                                                                                                              ####  Streamlit (Web UI)
+#### 🌐 Streamlit (Web UI)
 
-                                                                                                                                                                                                                                                                                                                                                                              * Interactive data exploration
-                                                                                                                                                                                                                                                                                                                                                                              * Asset ranking by score
-                                                                                                                                                                                                                                                                                                                                                                              * Historical visualization
-                                                                                                                                                                                                                                                                                                                                                                              * Deployed online
+* Interactive data exploration
+* Asset ranking by score
+* Historical visualization
+* Deployed online
 
-                                                                                                                                                                                                                                                                                                                                                                              ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                              ##  Data Model
+## 📊 Data Model
 
-                                                                                                                                                                                                                                                                                                                                                                              ### Live Tables
+### Live Tables
 
-                                                                                                                                                                                                                                                                                                                                                                              | Table      | Purpose            |
-                                                                                                                                                                                                                                                                                                                                                                              | ---------- | ------------------ |
-                                                                                                                                                                                                                                                                                                                                                                              | LiveMarket | Real-time snapshot |
-                                                                                                                                                                                                                                                                                                                                                                              | LiveSignal | Computed signals   |
+| Table      | Purpose            |
+| ---------- | ------------------ |
+| LiveMarket | Real-time snapshot |
+| LiveSignal | Computed signals   |
 
-                                                                                                                                                                                                                                                                                                                                                                              ### Historical Tables
+### Historical Tables
 
-                                                                                                                                                                                                                                                                                                                                                                              | Table        | Purpose            |
-                                                                                                                                                                                                                                                                                                                                                                              | ------------ | ------------------ |
-                                                                                                                                                                                                                                                                                                                                                                              | PriceHistory | Time-series prices |
-                                                                                                                                                                                                                                                                                                                                                                              | MarketData   | Extended metrics   |
+| Table        | Purpose            |
+| ------------ | ------------------ |
+| PriceHistory | Time-series prices |
+| MarketData   | Extended metrics   |
 
-                                                                                                                                                                                                                                                                                                                                                                              ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                              ##  Scoring System
+## 🧠 Scoring System
 
-                                                                                                                                                                                                                                                                                                                                                                              Each asset receives a dynamic score based on normalized metrics:
+Each asset receives a dynamic score based on normalized metrics:
 
-                                                                                                                                                                                                                                                                                                                                                                              * Price deviation (z-score)
-                                                                                                                                                                                                                                                                                                                                                                              * Volume anomaly
-                                                                                                                                                                                                                                                                                                                                                                              * Volatility behavior
+* Price deviation (z-score)
+* Volume anomaly
+* Volatility behavior
 
-                                                                                                                                                                                                                                                                                                                                                                              ```
-                                                                                                                                                                                                                                                                                                                                                                                score = (price_z * 0.4) + (volume_z * 0.35) + (volatility_z * 0.25)
-                                                                                                                                                                                                                                                                                                                                                                                ```
+```
+score = (price_z * 0.4) + (volume_z * 0.35) + (volatility_z * 0.25)
+```
 
-                                                                                                                                                                                                                                                                                                                                                                                  State classification:
+State classification:
 
-                                                                                                                                                                                                                                                                                                                                                                                  * `BULL` → score > 1.0
-                                                                                                                                                                                                                                                                                                                                                                                  * `BEAR` → score < -1.0
-                                                                                                                                                                                                                                                                                                                                                                                  * `NEUTRAL` → otherwise
+* `BULL` → score > 1.0
+* `BEAR` → score < -1.0
+* `NEUTRAL` → otherwise
 
-                                                                                                                                                                                                                                                                                                                                                                                  ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                  ##  Automation
+## 🔄 Automation
 
-                                                                                                                                                                                                                                                                                                                                                                                  * Runs continuously via scheduler
-                                                                                                                                                                                                                                                                                                                                                                                  * Maintains constant update cycles
-                                                                                                                                                                                                                                                                                                                                                                                  * Prevents data inconsistency using atomic commits
+* Runs continuously via scheduler
+* Maintains constant update cycles
+* Prevents data inconsistency using atomic commits
 
-                                                                                                                                                                                                                                                                                                                                                                                  ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                  ##  Live Deployment
+## 🌐 Live Deployment
 
-                                                                                                                                                                                                                                                                                                                                                                                  The Streamlit dashboard is publicly accessible:
+The Streamlit dashboard is publicly accessible:
 
-                                                                                                                                                                                                                                                                                                                                                                                   *(https://hybrid-engine-mqwq4z88cqgpwxhj5kbe5a.streamlit.app/)*
+👉 *(https://hybrid-engine-mqwq4z88cqgpwxhj5kbe5a.streamlit.app/)*
 
-                                                                                                                                                                                                                                                                                                                                                                                  ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                  ## ⚠️ Important Note
+## ⚠️ Important Note
 
-                                                                                                                                                                                                                                                                                                                                                                                  The deployed dashboard is **read-only**.
+The deployed dashboard is **read-only**.
 
-                                                                                                                                                                                                                                                                                                                                                                                  The data pipeline runs separately and feeds the database continuously.
+The data pipeline runs separately and feeds the database continuously.
 
-                                                                                                                                                                                                                                                                                                                                                                                  ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                  ##  Installation
+## 🛠 Installation
 
-                                                                                                                                                                                                                                                                                                                                                                                  ```bash
-                                                                                                                                                                                                                                                                                                                                                                                  git clone https://github.com/your-username/hybrid-engine.git
-                                                                                                                                                                                                                                                                                                                                                                                  cd hybrid-engine
-                                                                                                                                                                                                                                                                                                                                                                                  pip install -r requirements.txt
-                                                                                                                                                                                                                                                                                                                                                                                  ```
+```bash
+git clone https://github.com/your-username/hybrid-engine.git
+cd hybrid-engine
+pip install -r requirements.txt
+```
 
-                                                                                                                                                                                                                                                                                                                                                                                  ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                  ## ▶️ Running the System
+## ▶️ Running the System
 
-                                                                                                                                                                                                                                                                                                                                                                                  ### Start full system (pipeline + dashboard)
+### Start full system (pipeline + dashboard)
 
-                                                                                                                                                                                                                                                                                                                                                                                  ```bash
-                                                                                                                                                                                                                                                                                                                                                                                  python main.py
-                                                                                                                                                                                                                                                                                                                                                                                  ```
+```bash
+python main.py
+```
 
-                                                                                                                                                                                                                                                                                                                                                                                  ### Run Streamlit dashboard
+### Run Streamlit dashboard
 
-                                                                                                                                                                                                                                                                                                                                                                                  ```bash
-                                                                                                                                                                                                                                                                                                                                                                                  streamlit run deploy/app.py
-                                                                                                                                                                                                                                                                                                                                                                                  ```
+```bash
+streamlit run deploy/app.py
+```
 
-                                                                                                                                                                                                                                                                                                                                                                                  ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                  ##  Environment Variables
+## 🔐 Environment Variables
 
-                                                                                                                                                                                                                                                                                                                                                                                  Create a `.env` file:
+Create a `.env` file:
 
-                                                                                                                                                                                                                                                                                                                                                                                  ```
-                                                                                                                                                                                                                                                                                                                                                                                    DB_URL=your_database_url
-                                                                                                                                                                                                                                                                                                                                                                                    ```
+```
+DB_URL=your_database_url
+```
 
-                                                                                                                                                                                                                                                                                                                                                                                      ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                      ##  Tech Stack
+## 📦 Tech Stack
 
-                                                                                                                                                                                                                                                                                                                                                                                      * Python
-                                                                                                                                                                                                                                                                                                                                                                                      * SQLAlchemy
-                                                                                                                                                                                                                                                                                                                                                                                      * PostgreSQL (Neon)
-                                                                                                                                                                                                                                                                                                                                                                                      * Streamlit
-                                                                                                                                                                                                                                                                                                                                                                                      * Textual
-                                                                                                                                                                                                                                                                                                                                                                                      * Pandas
+* Python
+* SQLAlchemy
+* PostgreSQL (Neon)
+* Streamlit
+* Textual
+* Pandas
 
-                                                                                                                                                                                                                                                                                                                                                                                      ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                      ##  Design Philosophy
+## 🎯 Design Philosophy
 
-                                                                                                                                                                                                                                                                                                                                                                                      * Separation of concerns
-                                                                                                                                                                                                                                                                                                                                                                                      * Real-time + historical hybrid model
-                                                                                                                                                                                                                                                                                                                                                                                      * Minimal but expressive architecture
-                                                                                                                                                                                                                                                                                                                                                                                      * Focus on data flow over UI complexity
+* Separation of concerns
+* Real-time + historical hybrid model
+* Minimal but expressive architecture
+* Focus on data flow over UI complexity
 
-                                                                                                                                                                                                                                                                                                                                                                                      ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                      ##  Future Improvements
+## 🚀 Future Improvements
 
-                                                                                                                                                                                                                                                                                                                                                                                      * Real-time streaming (WebSockets)
-                                                                                                                                                                                                                                                                                                                                                                                      * Machine learning-based signals
-                                                                                                                                                                                                                                                                                                                                                                                      * Distributed pipeline execution
-                                                                                                                                                                                                                                                                                                                                                                                      * Advanced visualization (multi-asset comparison)
+* Real-time streaming (WebSockets)
+* Machine learning-based signals
+* Distributed pipeline execution
+* Advanced visualization (multi-asset comparison)
 
-                                                                                                                                                                                                                                                                                                                                                                                      ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                      ##  Final Thoughts
+## 📌 Final Thoughts
 
-                                                                                                                                                                                                                                                                                                                                                                                      Hybrid Engine is not just a dashboard.
+Hybrid Engine is not just a dashboard.
 
-                                                                                                                                                                                                                                                                                                                                                                                      It is a **modular, extensible system for real-time data intelligence**, designed to demonstrate backend architecture, data processing, and system orchestration at a practical level.
+It is a **modular, extensible system for real-time data intelligence**, designed to demonstrate backend architecture, data processing, and system orchestration at a practical level.
 
-                                                                                                                                                                                                                                                                                                                                                                                      ---
+---
 
-                                                                                                                                                                                                                                                                                                                                                                                      ##  Author
+## 👤 Author
 
-                                                                                                                                                                                                                                                                                                                                                                                      Developed as part of an evolving portfolio focused on advanced systems, data engineering, and intelligent architectures.
+Developed as part of an evolving portfolio focused on advanced systems, data engineering, and intelligent architectures.
 
-                                                                                                                                                                                                                                                                                                                                                                                      ---
-                                                                                                                                                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                                                                                                                                                    `
-                                                                                                                                                                                                                                                                                                                                                                                  `
-                                                                                                                                                                                                                                                                                                                                                                                `
-                                                                                                                                                                                                                                                                                                                                                                              `
-                                                                                                                                                                                                                                                                                                                                                              `
-`
+---
